@@ -75,7 +75,7 @@ cd ~/oss-cad-suite
 mkdir -p litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
-tabbypy3 litex_setup.py --init --install --user --config=full
+tabbypy3 litex_setup.py --init --install --config=full
 ```
 #### Testing it
 ```
