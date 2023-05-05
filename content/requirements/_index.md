@@ -45,7 +45,7 @@ export DOWNLOADS_PATH=$HOME/Downloads
 export INSTALL_PATH=$HOME
 curl -L -o"$DOWNLOADS_PATH"/oss-cad-suite.tgz https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-05-05/oss-cad-suite-linux-x64-20230505.tgz
 tar -xzf "$DOWNLOADS_PATH"/oss-cad-suite.tgz --directory "$INSTALL_PATH"
-cd "$INSTALL_PATH"
+cd "$INSTALL_PATH"/oss-cad-suite
 source environment
 ```
 
