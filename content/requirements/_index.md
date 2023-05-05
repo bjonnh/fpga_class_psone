@@ -3,7 +3,7 @@ title = "Requirements and setup"
 +++
 
 - Colorlight i5
-- Suppor    t board
+- Support board
 - Computer with Ethernet and USB and admin access with OSS-CAD installed
 
 ## Boards
