@@ -107,5 +107,14 @@ source ~/oss-cad-suite/environment
 This is all you need, any time you want to do something based on LiteX remember you have to use tabbypy3 and not python3 so you use the version that is packaged with oss-cad not the one from your OS.
 
 ### MacOS
+
 ### Windows
 Poor you, this is probably the most complicated OS to use for all of that.
+
+### VM using VirtualBox
+What we highly recommend for Windows and Mac users is to install a Ubuntu virtual machine, follow the Linux instructions and share the USB device with the VM.
+
+We may be distributing a VM image that has everything preinstalled if we have time to go throught it.
+
+Go to the settings of the VM, Ports, USB and add the device.
+
