@@ -1,8 +1,18 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'PS1 FPGA Class'
-#theme = "hugo-theme-relearn"
 
-#[outputs]
-#home = [ "HTML", "RSS", "SEARCH"]
+
+[module]
+[[module.imports]]
+  path = 'github.com/McShelby/hugo-theme-relearn'
+
+
+theme = "hugo-theme-relearn"
+[params]
+  themeVariant = ["neon", "relearn-light", "relearn-dark", "blue"]
+
+
+[outputs]
+home = [ "HTML", "RSS", "SEARCH"]
 
