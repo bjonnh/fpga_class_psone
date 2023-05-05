@@ -45,7 +45,8 @@ export DOWNLOADS_PATH=$HOME/Downloads
 export INSTALL_PATH=$HOME
 curl -L -o"$DOWNLOADS_PATH"/oss-cad-suite.tgz https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-05-05/oss-cad-suite-linux-x64-20230505.tgz
 tar -xzf "$DOWNLOADS_PATH"/oss-cad-suite.tgz --directory "$INSTALL_PATH"
-source "$INSTALL_PATH"/environment
+cd "$INSTALL_PATH"
+source environment
 ```
 
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
@@ -56,7 +57,6 @@ MAKE SURE YOU RUN THE FOLLOWING COMMANDS
 {{% /notice %}}
 
 ```shell
-cd ~/oss-cad-suite
 tabbypy3 -m pip install --upgrade pip
 rm -rf lib/python3.*/site-packages/migen.egg-link
 ```
@@ -78,17 +78,14 @@ Successfully installed pip-23.1.2
 This is really long,  please make sure you do that BEFORE the day of the class.
 
 ```shell
-cd ~/oss-cad-suite
 mkdir -p litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
 tabbypy3 litex_setup.py --init --install
-sudo bash -c "source ../environment ; tabbypy3 litex_setup.py --gcc=riscv"
-- [ ] tabbypip3 install meson ninja
 ```
 #### Testing it
 ```
-cd ~/oss-cad-suite
+cd "$INSTALL_PATH"
 mkdir -p projects
 cd projects
 git clone https://github.com/bjonnh/alscope
@@ -101,8 +98,8 @@ If this failed you may not have enough memory to build FPGA programs… Or somet
 #### Usage
 Now, anytime you need to use OSS-CAD:
 ```shell
-# Adapt that if you decided to change INSTALL_PATH obviously
-source ~/oss-cad-suite/environment
+export INSTALL_PATH=$HOME
+source "$INSTALL_PATH"/oss-cad-suite/environment
 ```
 This is all you need, any time you want to do something based on LiteX remember you have to use tabbypy3 and not python3 so you use the version that is packaged with oss-cad not the one from your OS.
 
