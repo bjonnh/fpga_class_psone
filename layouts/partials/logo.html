@@ -1,1 +1,4 @@
-<img src="https://raw.githubusercontent.com/pumpingstationone/ps1-design/master/identity/ps1-logo-w-name.svg" width="128" alt="PS1's logo">
+{{ $image := resources.Get "logo.png" }}
+<img src="{{ $image.RelPermalink }}">
+
+
