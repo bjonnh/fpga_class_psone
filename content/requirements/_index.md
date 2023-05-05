@@ -101,7 +101,7 @@ Now, anytime you need to use OSS-CAD:
 export INSTALL_PATH=$HOME
 source "$INSTALL_PATH"/oss-cad-suite/environment
 ```
-This is all you need, any time you want to do something based on LiteX remember you have to use tabbypy3 and not python3 so you use the version that is packaged with oss-cad not the one from your OS.
+This is all you need, any time you want to do something based on LiteX remember you have to use **tabbypy3** and not python3 so you use the version that is packaged with oss-cad not the one from your OS.
 
 ### MacOS
 
