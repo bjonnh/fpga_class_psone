@@ -88,7 +88,7 @@ tabbypy3 litex_setup.py --init --install
 ```
 #### Testing it
 ```
-cd "$INSTALL_PATH"
+cd "$INSTALL_PATH"/oss-cad-suite
 mkdir -p projects
 cd projects
 git clone https://github.com/bjonnh/alscope
