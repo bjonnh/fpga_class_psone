@@ -92,6 +92,7 @@ cd ~/oss-cad-suite
 mkdir -p projects
 cd projects
 git clone https://github.com/bjonnh/alscope
+cd alscope
 tabbypy3 ./main.py --ip-address=10.0.0.42 --build
 ```
 
