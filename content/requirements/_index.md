@@ -24,7 +24,11 @@ Make sure you don't try it for the first time on the day of the class, you will 
 
 ### Linux
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
-You need to have **cURL** and **git** installed.
+You need to have **cURL**, **git** and other build tools installed. 
+On ubuntu, those with:
+```shell
+apt-get install build-essential curl
+```
 {{% /notice %}}
 
 
@@ -46,12 +50,15 @@ source "$INSTALL_PATH"/environment
 
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 Currently, the Python distributed with oss-cad doesn't have the right version of pip
+and remove the installed migen reference that conflicts with the one we will use for LiteX
 
-MAKE SURE YOU RUN THE FOLLOWING COMMAND
+MAKE SURE YOU RUN THE FOLLOWING COMMANDS
 {{% /notice %}}
 
 ```shell
+cd ~/oss-cad-suite
 tabbypy3 -m pip install --upgrade pip
+rm -rf lib/python3.*/site-packages/migen.egg-link
 ```
 It will display something like:
 ```
@@ -75,15 +82,17 @@ cd ~/oss-cad-suite
 mkdir -p litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
-tabbypy3 litex_setup.py --init --install --config=full
+tabbypy3 litex_setup.py --init --install
+sudo bash -c "source ../environment ; tabbypy3 litex_setup.py --gcc=riscv"
+- [ ] tabbypip3 install meson ninja
 ```
 #### Testing it
 ```
-cd litex-boards/litex_boards/targets
-
-# This will take a while and display a TON of stuff
-tabbypy3 colorlight_i5.py --build
-# This should finish by: Info: Program finished normally.
+cd ~/oss-cad-suite
+mkdir -p projects
+cd projects
+git clone https://github.com/bjonnh/alscope
+tabbypy3 ./main.py --ip-address=10.0.0.42 --build
 ```
 
 If this failed you may not have enough memory to build FPGA programs… Or something failed during the installation
