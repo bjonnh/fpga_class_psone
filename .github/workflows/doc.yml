@@ -37,11 +37,10 @@ jobs:
         run: |
           hugo mod get -u
           hugo --minify
-        working-directory: web
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'web/public'
+          path: 'public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
