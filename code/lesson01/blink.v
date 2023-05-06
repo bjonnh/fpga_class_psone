@@ -1,4 +1,4 @@
-module top(input clk_i, output led_o, output tx_o);
+module top(input clk_i, output led_o);
    reg  led_reg;
    wire baseclk;
 
@@ -9,7 +9,6 @@ module top(input clk_i, output led_o, output tx_o);
    end
 
    assign led_o = led_reg;
-   assign tx_o = !led_reg;
 endmodule
 
 
