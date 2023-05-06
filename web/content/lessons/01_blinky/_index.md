@@ -167,6 +167,44 @@ graph LR;
     CLKDIV-->baseclk;
 ```
 
+## Running the thing
+We need quite a few steps to go from our Verilog description to something we can send to the FPGA.
+```mermaid { align="center" zoom="true" }
+graph TD;
+	Verilog --> S[[Synthesis\nYosys]];
+	S --> OD[Optimized design];
+    OD --> M[[Mapping\nYosys]];
+    M --> MD[Mapped design];
+    MD --> PR[[Place and Route\nnextpnr]];
+    PR --> PLD[Physical layout description];
+    PLD --> PK[Generate flashable bitstream\necppack];
+    PK --> Bitstream;
+```
+
+These are the commands you need to run to do those steps:
+```shell
+# blink.json is the optimized and mapped design
+yosys -p "synth_ecp5 -top top -json blink.json" blink.v
+# this will generate a placed and routed file blink_out.config
+nextpnr-ecp5 --json blink.json --textcfg blink_out.config --25k --package CABGA256 --lpf blink.lpf
+# this will generate both a SVF file and a bitstream BIT file
+ecppack --svf blink.svf blink_out.config blink.bit
+```
+
+A SVF (Serial Vector Format) file is a text file that describe the all the instructions that will be sent on the JTAG interface to program the chip. It is the way to transfer the Bitstream into the chip through its JTAG interface. 
+Currently we are just copying in a volatile way to the chip, cut the power and it is gone. There are ways to change the SVF file so it sends it to the connected FLASH instead (if it has one).
+
+## Sending to the board
+
+Depending on the tool you can use there are many ways to do that.
+
+I like openFPGALoader that I use with a DirtyJtag probe made with a RP2040 (https://github.com/phdussud/pico-dirtyJtag ).
+```shell
+openFPGALoader -c dirtyJtag -b colorlight --freq 16000000 blink.svf
+```
+
+It seems to support the i5 board natively just with `-b colorlight-i5` (no -c)
+
 
 ## Exercice
 - [ ] Make the led blink at 1Hz.
