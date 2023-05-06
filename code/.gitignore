@@ -1,0 +1,6 @@
+program.sh
+**/*.bit
+**/*.svf
+**/*_out.config
+**/*.json
+
