@@ -1,5 +1,6 @@
 +++
 title = "Introduction"
+weight = 1
 +++
 
 ## Aims of the class

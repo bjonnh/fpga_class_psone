@@ -1,5 +1,6 @@
 +++
 title = "Requirements and setup"
+weight = 2
 +++
 
 - Colorlight i5

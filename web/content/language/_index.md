@@ -1,5 +1,6 @@
 +++
 title = "Language for class"
+weight = 300
 +++
 
 This should disappear little by little.

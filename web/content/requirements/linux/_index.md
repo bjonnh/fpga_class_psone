@@ -1,5 +1,6 @@
 +++
 title = "Linux setup (recommended)"
+weight = 1
 +++
 
 ## Computer setup

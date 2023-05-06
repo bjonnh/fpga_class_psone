@@ -1,5 +1,6 @@
 +++
 title = "Windows setup"
+weight = 3
 +++
 
 ## Computer setup

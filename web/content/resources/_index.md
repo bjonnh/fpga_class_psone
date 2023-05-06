@@ -1,5 +1,6 @@
 +++
 title = "Resources"
+weight = 100
 +++
 
 ## About the FPGA chip
