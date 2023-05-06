@@ -19,10 +19,8 @@ Make sure you don't try it for the first time on the day of the class, you will 
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 You need to have a few tools installed. 
 We are giving instructions with brew, but if you know or use anything else, feel free to send us the commands to use.
+It looks like that just installing brew installs all the tools necessary.
 
-```shell
-brew install 
-```
 {{% /notice %}}
 
 
