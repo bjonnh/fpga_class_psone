@@ -35,12 +35,13 @@ jobs:
           extended: true
       - name: Build
         run: |
+          cd web
           hugo mod get -u
           hugo --minify
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'public'
+          path: 'web/public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
