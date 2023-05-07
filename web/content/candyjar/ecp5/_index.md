@@ -76,3 +76,17 @@ There are also more advances DSP cores (sysDSP) but they are not handled yet by 
  -   Dynamic Clock Gating: The ECP5 FPGA supports dynamic clock gating, which allows designers to selectively enable or disable clock signals to specific regions of the FPGA fabric, reducing power consumption when parts of the design are idle.
 
 -    Clock and Data Recovery (CDR) circuits: These are used in high-speed serial interfaces such as SERDES to recover clock signals embedded in data streams, ensuring proper synchronization between the transmitter and receiver. But in the ECP5 chip of the colorlight i5 there is no SERDES.
+
+
+## ECP5 routing with blinky
+
+This is the routing of our blink example from lesson 01.
+In light blue we see the clock dividing mechanism.
+In orange in the top-right that's our assign led register to led output.
+And in green are all the support things (connecting clocks and things together plus a lot of things I have no idea about)
+
+
+![ecp5_blinky.png](ecp5_blinky.png)
+
+If we zoom in the top right, we can see how the divider network is connected to the led register:
+![ecp5_blinky_div2led.png](ecp5_blinky_div2led.png)
