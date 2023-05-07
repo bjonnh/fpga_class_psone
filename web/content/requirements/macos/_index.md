@@ -3,19 +3,8 @@ title = "MacOS setup"
 weight = 1
 +++
 
-## Computer setup
+## MacOS
 
-You need a few things installed on your computer BEFORE THE CLASS:
-
-- OSS-CAD
-- Yosys
-- A text editor you love and trust and are comfortable with
-
-And you need to be able to setup your own networks (so no work locked computers) and install software from the internet (so no parental lock or other insanities).
-
-Make sure you don't try it for the first time on the day of the class, you will be unhappy and we will be as well.
-
-### MacOS
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 You need to have a few tools installed. 
 We are giving instructions with brew, but if you know or use anything else, feel free to send us the commands to use.

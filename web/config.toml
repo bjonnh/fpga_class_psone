@@ -1,4 +1,7 @@
 baseURL = 'https://bjonnh.github.io/fpga_class_psone'
+canonifyURLs = true
+relativeURLs = true
+
 languageCode = 'en-us'
 title = 'PS1 FPGA Class'
 
@@ -14,5 +17,5 @@ theme = "hugo-theme-relearn"
 
 
 [outputs]
-home = [ "HTML", "RSS", "SEARCH"]
+home = [ "HTML", "RSS", "SEARCH", "PRINT", "SEARCHPAGE"]
 

@@ -110,7 +110,7 @@ module top(input clk_i, output led_o);
 endmodule
 ```
 
-This is declaring a module that has one input clk_i and one output led_o. All things in Verilog are divided like that so blocks can be reused and reimplemented easily. You could think of them as "functions" for now (even if the reality is slightly more complex).
+This is declaring a module named top (mandatory in Yosys, that's the start of everything) that has one input clk_i and one output led_o. All things in Verilog are divided like that so blocks can be reused and reimplemented easily. You could think of them as "functions" for now (even if the reality is slightly more complex).
 
 ```verilog
 	reg led_reg;

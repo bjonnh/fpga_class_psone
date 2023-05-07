@@ -1,6 +1,6 @@
 +++
-title = "Assignments"
-weight = 1
+title = "Verilog assignments"
+weight = 2
 +++
 
 We have various kinds of assignment in Verilog:
