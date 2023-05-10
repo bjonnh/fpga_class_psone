@@ -21,6 +21,8 @@ The FPGA contains pull-ups and pull-downs that you can set at synthesis time:
 
 ![inputs.png](inputs.png)
 
+For more details on how the ECP5 handles the IOs see: https://www.latticesemi.com/-/media/LatticeSemi/Documents/ApplicationNotes/EH/FPGA-TN-02032-1-3-ECP5-ECP5G-sysIO-Usage-Guide.ashx?document_id=50464
+
 ## Memory
 In Verilog, you can create data types of arbitrary types:
 ```verilog
