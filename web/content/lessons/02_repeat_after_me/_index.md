@@ -111,7 +111,7 @@ endmodule
 
 ```
 
-And to run it:
+And to build it:
 ```shell
 yosys -p "synth_ecp5 -top top -json follow.json" follow.v
 nextpnr-ecp5 --json follow.json --textcfg follow.config --25k --package CABGA256 --lpf follow.lpf
