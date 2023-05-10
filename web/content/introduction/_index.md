@@ -10,8 +10,6 @@ This is not a class about learning how to use a computer or learning the deep in
 ## Organization
 You need to come with a computer already setup with all the tools. See the [Requirements](../requirements/)
 ## Disclaimer
-
-We are not responsible to any damage. You are connecting electronic devices to your computer and this comes with risks that you need to evaluate for yourself. Make sure you have backups and that you don't use a computer that you can't replace.
+We are not responsible for any damage, anywhere and on anything. You are connecting electronic devices to your computer and this comes with risks that you need to evaluate for yourself. Make sure you have backups and that you don't use a computer that you can't replace.
 
 You are also going to install quite a lot of software from various places, so make sure you are using appropriate protections against the threats you fear the most.
-

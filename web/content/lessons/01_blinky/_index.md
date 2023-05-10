@@ -1,5 +1,5 @@
 +++
-title = "01_blinky"
+title = "01 - Blink"
 weight = 1
 +++
 
