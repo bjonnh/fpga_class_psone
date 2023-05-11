@@ -2,7 +2,7 @@ module top(input clk_i, output led_o);
    reg  led_reg;
    wire baseclk;
 
-   clkdiv #(.DIV(200000)) slowclk (clk_i, baseclk);
+   clkdiv #(.DIV(1000000)) slowclk (clk_i, baseclk);
 
    always @(posedge baseclk) begin;
       led_reg <= !led_reg;
