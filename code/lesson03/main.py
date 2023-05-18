@@ -112,7 +112,7 @@ def main():
     parser.add_argument("--build", action="store_true", help="Build bitstream")
     parser.add_argument("--load", action="store_true", help="Load bitstream")
     parser.add_argument("--ip-address", default="10.0.0.42",
-                        help="Ethernet IP address of the board (default: 192.168.1.20).")
+                        help="Ethernet IP address of the board (default: 10.0.0.42).")
     parser.add_argument("--mac-address", default="0x726b895bc2e2",
                         help="Ethernet MAC address of the board (defaullt: 0x726b895bc2e2).")
     args = parser.parse_args()
