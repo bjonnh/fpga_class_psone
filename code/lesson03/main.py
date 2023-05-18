@@ -16,17 +16,17 @@ from litex.soc.cores.led import LedChaser
 from litex.soc.cores.spi_flash import ECP5SPIFlash
 from litex.soc.integration.builder import *
 from litex.soc.integration.soc_core import *
-from litex_boards.platforms import colorlight_5a_75b
+from litex_boards.platforms import colorlight_i5
 from migen import *
 from migen.genlib.misc import WaitTimer
 
 # IOs ----------------------------------------------------------------------------------------------
 
-_gpios = [
-    # GPIOs.
-    ("gpio", 0, Pins("j4:0"), IOStandard("LVCMOS33")),
-    ("gpio", 1, Pins("j4:1"), IOStandard("LVCMOS33")),
-]
+#_gpios = [
+#    # GPIOs.
+#    ("gpio", 0, Pins("j4:0"), IOStandard("LVCMOS33")),
+#    ("gpio", 1, Pins("j4:1"), IOStandard("LVCMOS33")),
+#]
 
 
 # CRG ----------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ class _CRG(Module):
 
 class ColorLite(SoCMini):
     def __init__(self, sys_clk_freq=int(50e6), with_etherbone=True, ip_address=None, mac_address=None):
-        platform = colorlight_5a_75b.Platform(revision="7.0")
+        platform = colorlight_i5.Platform(revision="7.0")
 
         # CRG --------------------------------------------------------------------------------------
         self.submodules.crg = _CRG(platform, sys_clk_freq)
@@ -74,11 +74,11 @@ class ColorLite(SoCMini):
 
         # artificial signal
         count = Signal(8)
-        rst_n = platform.request("user_btn_n", 0)
+        #rst_n = platform.request("user_btn_n", 0)
         self.sync += count.eq(count + 1)
         analyzer_signals = [
             count,
-            rst_n
+        #    rst_n
         ]
         self.submodules.analyzer = LiteScopeAnalyzer(analyzer_signals,
             depth=1024,
@@ -89,20 +89,20 @@ class ColorLite(SoCMini):
         self.add_csr("analyzer")
 
         # GPIOs ------------------------------------------------------------------------------------
-        platform.add_extension(_gpios)
+        #platform.add_extension(_gpios)
 
         # Power switch
-        power_sw_pads = platform.request("gpio", 0)
-        power_sw_gpio = Signal()
-        power_sw_timer = WaitTimer(2 * sys_clk_freq)  # Set Power switch high after power up for 2s.
-        self.comb += power_sw_timer.wait.eq(1)
-        self.submodules += power_sw_timer
-        self.submodules.gpio0 = GPIOOut(power_sw_gpio)
-        self.comb += power_sw_pads.eq(power_sw_gpio | ~power_sw_timer.done)
+        #power_sw_pads = platform.request("gpio", 0)
+        #power_sw_gpio = Signal()
+        #power_sw_timer = WaitTimer(2 * sys_clk_freq)  # Set Power switch high after power up for 2s.
+        #self.comb += power_sw_timer.wait.eq(1)
+        #self.submodules += power_sw_timer
+        ##self.submodules.gpio0 = GPIOOut(power_sw_gpio)
+        #self.comb += power_sw_pads.eq(power_sw_gpio | ~power_sw_timer.done)
 
         # Reset Switch
-        reset_sw_pads = platform.request("gpio", 1)
-        self.submodules.gpio1 = GPIOOut(reset_sw_pads)
+        #reset_sw_pads = platform.request("gpio", 1)
+        #self.submodules.gpio1 = GPIOOut(reset_sw_pads)
 
 
 # Build --------------------------------------------------------------------------------------------
