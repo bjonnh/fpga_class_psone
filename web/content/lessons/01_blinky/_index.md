@@ -196,14 +196,10 @@ Currently we are just copying in a volatile way to the chip, cut the power and i
 
 ## Sending to the board
 
-Depending on the tool you can use there are many ways to do that.
-
-I like openFPGALoader that I use with a DirtyJtag probe made with a RP2040 (https://github.com/phdussud/pico-dirtyJtag ).
+The you upload with
 ```shell
-openFPGALoader -c dirtyJtag -b colorlight --freq 16000000 blink.svf
+openFPGALoader -b "colorlight-i5" --freq "16000000" blink.svf
 ```
-
-It seems to support the i5 board natively just with `-b colorlight-i5` (no -c)
 
 
 ## Exercice

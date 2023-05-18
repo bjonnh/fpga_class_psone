@@ -1,6 +1,6 @@
----
+--- 
 title: "03 - LiteX"
-date: 2023-05-09
+date: 2023-05-09  
 author: Jonathan Bisson
 id: 20230509212227
 ---
@@ -55,17 +55,17 @@ from litex.soc.cores.led import LedChaser
 from litex.soc.cores.spi_flash import ECP5SPIFlash
 from litex.soc.integration.builder import *
 from litex.soc.integration.soc_core import *
-from litex_boards.platforms import colorlight_5a_75b
+from litex_boards.platforms import colorlight_i5
 from migen import *
 from migen.genlib.misc import WaitTimer
 
 # IOs ----------------------------------------------------------------------------------------------
 
-_gpios = [
-    # GPIOs.
-    ("gpio", 0, Pins("j4:0"), IOStandard("LVCMOS33")),
-    ("gpio", 1, Pins("j4:1"), IOStandard("LVCMOS33")),
-]
+#_gpios = [
+#    # GPIOs.
+#    ("gpio", 0, Pins("j4:0"), IOStandard("LVCMOS33")),
+#    ("gpio", 1, Pins("j4:1"), IOStandard("LVCMOS33")),
+#]
 
 
 # CRG ----------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ class _CRG(Module):
 
 class ColorLite(SoCMini):
     def __init__(self, sys_clk_freq=int(50e6), with_etherbone=True, ip_address=None, mac_address=None):
-        platform = colorlight_5a_75b.Platform(revision="7.0")
+        platform = colorlight_i5.Platform(revision="7.0")
 
         # CRG --------------------------------------------------------------------------------------
         self.submodules.crg = _CRG(platform, sys_clk_freq)
@@ -113,11 +113,11 @@ class ColorLite(SoCMini):
 
         # artificial signal
         count = Signal(8)
-        rst_n = platform.request("user_btn_n", 0)
+        #rst_n = platform.request("user_btn_n", 0)
         self.sync += count.eq(count + 1)
         analyzer_signals = [
             count,
-            rst_n
+        #    rst_n
         ]
         self.submodules.analyzer = LiteScopeAnalyzer(analyzer_signals,
             depth=1024,
@@ -128,20 +128,20 @@ class ColorLite(SoCMini):
         self.add_csr("analyzer")
 
         # GPIOs ------------------------------------------------------------------------------------
-        platform.add_extension(_gpios)
+        #platform.add_extension(_gpios)
 
         # Power switch
-        power_sw_pads = platform.request("gpio", 0)
-        power_sw_gpio = Signal()
-        power_sw_timer = WaitTimer(2 * sys_clk_freq)  # Set Power switch high after power up for 2s.
-        self.comb += power_sw_timer.wait.eq(1)
-        self.submodules += power_sw_timer
-        self.submodules.gpio0 = GPIOOut(power_sw_gpio)
-        self.comb += power_sw_pads.eq(power_sw_gpio | ~power_sw_timer.done)
+        #power_sw_pads = platform.request("gpio", 0)
+        #power_sw_gpio = Signal()
+        #power_sw_timer = WaitTimer(2 * sys_clk_freq)  # Set Power switch high after power up for 2s.
+        #self.comb += power_sw_timer.wait.eq(1)
+        #self.submodules += power_sw_timer
+        ##self.submodules.gpio0 = GPIOOut(power_sw_gpio)
+        #self.comb += power_sw_pads.eq(power_sw_gpio | ~power_sw_timer.done)
 
         # Reset Switch
-        reset_sw_pads = platform.request("gpio", 1)
-        self.submodules.gpio1 = GPIOOut(reset_sw_pads)
+        #reset_sw_pads = platform.request("gpio", 1)
+        #self.submodules.gpio1 = GPIOOut(reset_sw_pads)
 
 
 # Build --------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ def main():
     parser.add_argument("--build", action="store_true", help="Build bitstream")
     parser.add_argument("--load", action="store_true", help="Load bitstream")
     parser.add_argument("--ip-address", default="10.0.0.42",
-                        help="Ethernet IP address of the board (default: 192.168.1.20).")
+                        help="Ethernet IP address of the board (default: 10.0.0.42).")
     parser.add_argument("--mac-address", default="0x726b895bc2e2",
                         help="Ethernet MAC address of the board (defaullt: 0x726b895bc2e2).")
     args = parser.parse_args()
@@ -166,12 +166,16 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
 ## Build
 
 ```shell
 python3 main.py --build
+```
+
+## Upload
+```shell
+openFPGALoader -b "colorlight-i5" --freq "16000000" ./build/gateware/colorlite.svf
 ```
 
 ## Run
@@ -185,9 +189,9 @@ Run the litex server
 litex_server --udp --udp-ip=10.0.0.42
 ```
 
-Arm the device (we tell it to use the signal user_btn_n0 as the trigger)
+Start an acquisition:
 ```shell
-litescope_cli -r 'user_btn_n0' --dump dump.sr
+litescope_cli -r --dump dump.sr
 ```
 
 Once you press the button on the device, it will trigger the logic analyzer and save a file `dump.sr` with the signals.
