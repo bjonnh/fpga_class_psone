@@ -7,13 +7,6 @@ Blinky is the "Hello world" of FPGAs
 
 The code is in code/lesson_01
 
-{{% notice style="primary" title="TODO" icon="skull-crossbones" %}}
-- [ ] Programmer steps for i5
-- [ ] Adapt code for i5 (currently for the 5a-75b)
-    - [ ] P6 is P3 in i5
-    - [ ] P11 is D2 in i5
-{{% /notice %}}
-
 This is probably the simplest code you can use on an FPGA that will generate something you can see working.
 
 ## How code is organized
@@ -74,17 +67,17 @@ We have some magic logic that takes a **clk_i**, transforms it and sends that to
 Now we also need to tell whatever will interpret that verilog, this is what **clk_in** and **led_o** are. That's the role of the LPF file (Lattice Preference File), this file will link your human name to specific pins or internal lines inside the chip.
 
 ```
-LOCATE COMP "clk_i" SITE "P6";
+LOCATE COMP "clk_i" SITE "P3";
 IOBUF PORT "clk_i" IO_TYPE=LVCMOS33;
 FREQUENCY PORT "clk_i" 25 MHZ;
 
-LOCATE COMP "led_o" SITE "P11";
+LOCATE COMP "led_o" SITE "U16";
 IOBUF PORT "led_o" IO_TYPE=LVCMOS25;
 ```
 
-We are taking the pad P6 of the FPGA (site definition), saying it has a 3V3 CMOS level (LVCMOS33) and that it is a frequency type port that's receiving a 25MHz clock.
+We are taking the pad P3 of the FPGA (site definition), saying it has a 3V3 CMOS level (LVCMOS33) and that it is a frequency type port that's receiving a 25MHz clock.
 
-And we are saying the P11 is a 2.5V CMOS level GPIO.
+And we are saying the U16 is a 2.5V CMOS level GPIO.
 
 ## Digging into "SOMETHING"
 We will ignore the details of clkdiv for that lesson and do something people programming FPGA love: making abstractions and ignoring the implementation details. In practice unfortunately you often have to go dig in implementations for performance, size of power consumption reasons.
@@ -186,7 +179,7 @@ These are the commands you need to run to do those steps:
 # blink.json is the optimized and mapped design
 yosys -p "synth_ecp5 -top top -json blink.json" blink.v
 # this will generate a placed and routed file blink_out.config
-nextpnr-ecp5 --json blink.json --textcfg blink_out.config --25k --package CABGA256 --lpf blink.lpf
+nextpnr-ecp5 --json blink.json --textcfg blink_out.config --25k --package CABGA381 --lpf blink.lpf
 # this will generate both a SVF file and a bitstream BIT file
 ecppack --svf blink.svf blink_out.config blink.bit
 ```

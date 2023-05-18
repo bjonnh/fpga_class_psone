@@ -6,10 +6,10 @@ id: 20230509203129
 ---
 
 ## Managing Inputs
-We now want to talk to that FPGA. For that we have to declare an input.
+We now want to talk to that FPGA. For that we have to declare an input:
 
 ```
-LOCATE COMP "port_i" SITE "F12";
+LOCATE COMP "port_i" SITE "E1";
 IOBUF PORT "port_i" PULLMODE=UP IO_TYPE=LVCMOS33;
 ```
 
@@ -44,15 +44,16 @@ We can set the value of a register at the beginning of the life of the module:
 ## Code
 follow.lpf:
 ``text
-LOCATE COMP "clk_i" SITE "P6";
+LOCATE COMP "clk_i" SITE "P3";
 IOBUF PORT "clk_i" IO_TYPE=LVCMOS33;
 FREQUENCY PORT "clk_i" 25 MHZ;
 
-LOCATE COMP "led_o" SITE "P11";
+LOCATE COMP "led_o" SITE "U16";
 IOBUF PORT "led_o" IO_TYPE=LVCMOS25;
 
-LOCATE COMP "port_i" SITE "F12";
+LOCATE COMP "port_i" SITE "E1";
 IOBUF PORT "port_i" PULLMODE=UP IO_TYPE=LVCMOS33;
+
 ``
 
 follow.v
@@ -114,7 +115,7 @@ endmodule
 And to build it:
 ```shell
 yosys -p "synth_ecp5 -top top -json follow.json" follow.v
-nextpnr-ecp5 --json follow.json --textcfg follow.config --25k --package CABGA256 --lpf follow.lpf
+nextpnr-ecp5 --json follow.json --textcfg follow.config --25k --package CABGA381 --lpf follow.lpf
 ecppack --svf follow.svf follow.config follow.bit
 ```
 
