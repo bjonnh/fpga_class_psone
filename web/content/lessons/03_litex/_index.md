@@ -210,3 +210,11 @@ You can see a demo video below:
 In pink, ethernet, in blue the analyzer and its memory.
 
 ![area.png](area.png)
+
+
+## Exercice
+
+- [ ] Insert the repeat after me code from previous lesson so you can record it.
+
+This one is hard and will require you to read this documentation: https://github.com/enjoy-digital/litex/wiki/Reuse-a-(System)Verilog,-VHDL,-(n)Migen,-Spinal-HDL,-Chisel-core
+

@@ -112,14 +112,20 @@ endmodule
 
 ```
 
-And to build it:
+## Build
+
 ```shell
 yosys -p "synth_ecp5 -top top -json follow.json" follow.v
 nextpnr-ecp5 --json follow.json --textcfg follow.config --25k --package CABGA381 --lpf follow.lpf
 ecppack --svf follow.svf follow.config follow.bit
 ```
 
-The you upload with
+## Upload
+
 ```shell
 openFPGALoader -b "colorlight-i5" --freq "16000000" follow.svf
 ```
+
+## Exercice
+
+- [ ] Make it have a longer memory

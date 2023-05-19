@@ -3,5 +3,4 @@ title = "Lessons"
 weight = 3
 +++
 
-TODO:
-- [ ] LiteX Ethernet for logic analyzer
+If you are here, you probably want to start with [Lesson 1](./01_blinky)

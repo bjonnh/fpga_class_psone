@@ -170,7 +170,7 @@ graph TD;
     M --> MD[Mapped design];
     MD --> PR[[Place and Route\nnextpnr]];
     PR --> PLD[Physical layout description];
-    PLD --> PK[Generate flashable bitstream\necppack];
+    PLD --> PK[[Generate flashable bitstream\necppack]];
     PK --> Bitstream;
 ```
 
@@ -189,7 +189,7 @@ Currently we are just copying in a volatile way to the chip, cut the power and i
 
 ## Sending to the board
 
-The you upload with
+Then you upload with
 ```shell
 openFPGALoader -b "colorlight-i5" --freq "16000000" blink.svf
 ```
