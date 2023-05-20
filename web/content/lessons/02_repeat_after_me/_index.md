@@ -123,7 +123,7 @@ ecppack --svf follow.svf follow.config follow.bit
 ## Upload
 
 ```shell
-openFPGALoader -b "colorlight-i5" --freq "16000000" follow.svf
+sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000000" follow.svf
 ```
 
 ## Exercice

@@ -175,14 +175,16 @@ python3 main.py --build
 
 ## Upload
 
+We are supposed to be able to do:
 ```shell
 python3 main.py --load
 ```
 
-Or if your ecpdap doesn't work:
+To load on the board but it doesn't always work.
+In which case you should do:
 
 ```shell
-openFPGALoader -b "colorlight-i5" --freq "16000000" ./build/gateware/colorlite.svf
+sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000000" ./build/gateware/colorlite.svf
 ```
 
 ## Run

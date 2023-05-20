@@ -191,7 +191,7 @@ Currently we are just copying in a volatile way to the chip, cut the power and i
 
 Then you upload with
 ```shell
-openFPGALoader -b "colorlight-i5" --freq "16000000" blink.svf
+sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000000" blink.svf
 ```
 
 

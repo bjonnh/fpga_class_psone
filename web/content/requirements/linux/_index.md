@@ -21,8 +21,11 @@ You need to have **cURL**, **git** and other build tools installed.
 And you need to be a member of the dialout group to be able to access the programmer serial port.
 On ubuntu, those with:
 ```shell
-sudo apt-get install build-essential curl
-sudo usermod -a -G dialout $USER
+sudo apt-get install build-essential curl git libhidapi-hidraw0
+sudo usermod -a -G dialout,plugdev $USER
+sudo curl -o /etc/udev/rules.d/99-openfpgaloader.rules https://raw.githubusercontent.com/trabucayre/openFPGALoader/master/99-openfpgaloader.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger # force udev to take new rule
+# You will have to logout and login again
 ```
 {{% /notice %}}
 
@@ -51,7 +54,7 @@ source environment
 Currently, the Python distributed with oss-cad doesn't have the right version of pip
 and remove the installed migen reference that conflicts with the one we will use for LiteX
 
-MAKE SURE YOU RUN THE FOLLOWING COMMANDS
+MAKE SURE YOU RUN THE FOLLOWING COMMANDS, they work well on ubuntu, it will work ok on RedHat-like or Arch, but you will have to install the riscv toolchain yourself.
 {{% /notice %}}
 
 ```shell
@@ -85,6 +88,7 @@ cd litex
 git checkout 53a0bc92e459ad440ae1a9fb9f6f24c600f658d6
 cd ..
 tabbypy3 litex_setup.py --install
+tabbypy3 litex_setup.py --gcc=riscv
 ```
 #### Testing it
 ```
