@@ -40,7 +40,12 @@ del .\lib\python3.8\site-packages\migen.egg-link
 mkdir litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py # This is a single line starting with curl
-python3 litex_setup.py --init --install
+tabbypy3 litex_setup.py --init
+cd litex
+# We need to do that as litex is currently broken
+git checkout 53a0bc92e459ad440ae1a9fb9f6f24c600f658d6
+cd ..
+tabbypy3 litex_setup.py --install
 cd ..
 mkdir projects
 cd projects

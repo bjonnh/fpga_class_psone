@@ -39,7 +39,7 @@ export DOWNLOADS_PATH=$HOME/Downloads
 export INSTALL_PATH=$HOME
 
 mkdir -p "$DOWNLOADS_PATH"
-curl -L -o"$DOWNLOADS_PATH"/oss-cad-suite.tgz https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-05-05/oss-cad-suite-linux-x64-20230505.tgz
+curl -L -o"$DOWNLOADS_PATH"/oss-cad-suite.tgz https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-05-20/oss-cad-suite-linux-x64-20230520.tgz
 tar -xzf "$DOWNLOADS_PATH"/oss-cad-suite.tgz --directory "$INSTALL_PATH"
 cd "$INSTALL_PATH"/oss-cad-suite
 source environment
@@ -77,7 +77,12 @@ This is really long,  please make sure you do that BEFORE the day of the class.
 mkdir -p litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
-tabbypy3 litex_setup.py --init --install
+tabbypy3 litex_setup.py --init
+cd litex
+# We need to do that as litex is currently broken
+git checkout 53a0bc92e459ad440ae1a9fb9f6f24c600f658d6
+cd ..
+tabbypy3 litex_setup.py --install
 ```
 #### Testing it
 ```
