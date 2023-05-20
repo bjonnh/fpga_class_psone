@@ -18,9 +18,11 @@ Make sure you don't try it for the first time on the day of the class, you will 
 ### Linux
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 You need to have **cURL**, **git** and other build tools installed. 
+And you need to be a member of the dialout group to be able to access the programmer serial port.
 On ubuntu, those with:
 ```shell
-apt-get install build-essential curl
+sudo apt-get install build-essential curl
+sudo usermod -a -G dialout $USER
 ```
 {{% /notice %}}
 
@@ -31,7 +33,7 @@ and get the one for your platform, put it in /tmp
 
 For example on x64, assuming you want to install in your home directory, it will decompress in ~/oss-cad-suite
 
-This is assumed you will run all those commands in the same terminal.
+This is assuming you will run all those commands in the same terminal.
 
 ```shell
 # You can customize those, but you are responsible to change them when necessary
