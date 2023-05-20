@@ -174,6 +174,13 @@ python3 main.py --build
 ```
 
 ## Upload
+
+```shell
+python3 main.py --load
+```
+
+Or if your ecpdap doesn't work:
+
 ```shell
 openFPGALoader -b "colorlight-i5" --freq "16000000" ./build/gateware/colorlite.svf
 ```

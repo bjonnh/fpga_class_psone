@@ -55,10 +55,25 @@ Windows is dumb with regard to drivers. You need to use a WinUSB driver for JTAG
 
 Follow the instructions at: https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/winusb-installation
 
+#### RISC v compiler suite
+
+For this the easiest solution I found is to use [MSYS2](https://www.msys2.org/)
+
+and run inside msys2
+```shell
+pacman -S mingw-w64-x86_64-riscv64-unknown-elf-gcc ninja meson make
+```
+
+Then in your powershell
+```powershell
+set PATH=%PATH%;C:\msys64\mingw64\bin;C:\msys64\usr\bin
+```
+
+But then I couldn't get it to compile the board properly. So really you shouldn't be using Windows... But we can still give you the files.
+
 ### VM using VirtualBox
 What we highly recommend for Windows and Mac users is to install a Ubuntu virtual machine, follow the Linux instructions and share the USB device with the VM.
 
-We may be distributing a VM image that has everything preinstalled if we have time to go throught it.
+Go to the settings of the VM, Ports, USB and add the JTAG device called NXP ARM mbed (0d28:0204) or something like that.
 
-Go to the settings of the VM, Ports, USB and add the device JTAG device.
 
