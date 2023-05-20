@@ -15,7 +15,14 @@ And you need to be able to setup your own networks (so no work locked computers)
 
 Make sure you don't try it for the first time on the day of the class, you will be unhappy and we will be as well.
 
-### Linux
+### Fast installation on Ubuntu
+
+If you trust me, you can run everything with:
+```shell
+curl -sf -L https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh -o- |bash
+```
+
+### Linux details (useful only if you have issues)
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 You need to have **cURL**, **git** and other build tools installed. 
 And you need to be a member of the dialout group to be able to access the programmer serial port.

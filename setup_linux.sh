@@ -13,7 +13,8 @@ esac
 echo "This is going to download a lot of things from the internet and run things for you"
 echo "If you are not ready for that, just exit (ctrl+c) and do it yourself following"
 echo "the manual instructions"
-read a
+echo "I will wait 10 seconds for you to stop me"
+sleep 10
 
 export DOWNLOADS_PATH=$HOME/Downloads
 export INSTALL_PATH=$HOME
