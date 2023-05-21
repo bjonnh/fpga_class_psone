@@ -6,6 +6,7 @@ set -e
 
 case "$ID" in
   ubuntu) echo 'This is Ubuntu Linux, I can work with that' ;;
+  debian) echo 'This is Debian Linux, I can work with that' ;;
        *) echo 'Sorry this will only work on Ubuntu, but I would appreciate your help adapting it'; exit 1 ;;
 esac
 
