@@ -6,7 +6,7 @@ weight = 100
 ## About the FPGA chip
 The Lattice ECP5 is a reasonably powerful FPGA which has had its bitstream fully reversed by [Project Trellis](https://prjtrellis.readthedocs.io/en/latest/index.html). This enables it be to fully supported by [the open source tools](https://github.com/YosysHQ/oss-cad-suite-build), requiring no vendor tools.
  - [ECP5 Family Datasheet](https://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/ECP5/FPGA-DS-02012-2-8-ECP5-ECP5G-Family-Data-Sheet.ashx?document_id=50461)
-
+ - [.CSV Spreadsheet of the ECP5U-25 Pinout](https://www.latticesemi.com/view_document?document_id=50485)
 ## About the Colorlite i5 board and related boards
 An [in-depth overview](https://tomverbeure.github.io/2021/01/22/The-Colorlight-i5-as-FPGA-development-board.html) of the boards we are using is on Tom Verbeure's blog.
 
