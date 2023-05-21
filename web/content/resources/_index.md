@@ -22,8 +22,8 @@ The Colorlite i5 is technically part of a commercial [videowall product](https:/
 - Finaly, another add-on to the extension board provides ethernet: https://github.com/kazkojima/colorlight-i5-tips
 
 ## About the OSS FPGA eco-system
-
-- OSS Cad Suite - Packages many of the components necessary: https://github.com/YosysHQ/oss-cad-suite-build
+The tools for working with FPGAs in an open-source stack started around 2015. Project icestorm enabled the use of the Lattice Icestick (a popular ~$20 pre-pandemic development board for the ICE40 FPGA). More recently this board has become hard to come by, however, the toolchain has been greatly developed and supports quite a number of other FPGAs as well.
+- OSS Cad Suite - Bundles together many of the components necessary for the stack.: https://github.com/YosysHQ/oss-cad-suite-build
 - Yosys - OSS FPGA Synthesis: https://yosyshq.net/yosys/
 - Litex - building hardware easily on FPGA with Python code: https://github.com/enjoy-digital/litex
 - VexRiscv - RISC-V CPU: https://github.com/SpinalHDL/VexRiscv
