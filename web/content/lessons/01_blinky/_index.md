@@ -77,7 +77,9 @@ IOBUF PORT "led_o" IO_TYPE=LVCMOS25;
 
 We are taking the pad P3 of the FPGA (site definition), saying it has a 3V3 CMOS level (LVCMOS33) and that it is a frequency type port that's receiving a 25MHz clock.
 
-And we are saying the U16 is a 2.5V CMOS level GPIO.
+All the ports are supposedly connected to a 3.3V rail so should be LVCMOS33. 
+
+And we are saying the U16 is a 2.5V CMOS level GPIO. Here we copied from other files but there are little reasons why this one was set to that.
 
 ## Digging into "SOMETHING"
 We will ignore the details of clkdiv for that lesson and do something people programming FPGA love: making abstractions and ignoring the implementation details. In practice unfortunately you often have to go dig in implementations for performance, size of power consumption reasons.
