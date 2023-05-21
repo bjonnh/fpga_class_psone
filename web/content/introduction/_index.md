@@ -4,7 +4,7 @@ weight = 1
 +++
 
 ## Aims of the class
-Teach the basics of FPGA programming using Open Source and Free Software. You will not be an expert in FPGAs but you should be able to create simple programs and build more complex things over time.
+Introduce the basics of FPGA programming using Verilog/Python on an [Open Source and Free toolchain](https://github.com/YosysHQ/oss-cad-suite-build).  Boards used will be the readily available [Colorlite i5](https://tomverbeure.github.io/2021/01/22/The-Colorlight-i5-as-FPGA-development-board.html), which use the Lattice ECP5 FPGA. You will not be an expert in FPGAs but you should be able to create simple programs and build more complex things over time.
 This is not a class about learning how to use a computer or learning the deep intricacies of Verilog and LUTs. This is a practical class where you get your hands dirty trying to make your board do cool things. And we will sparkle a little bit of theory so you get a sense of what is happening.
 
 ## Organization
