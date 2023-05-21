@@ -4,7 +4,7 @@ weight = 100
 +++
 
 ## About the FPGA chip
-The Lattice ECP5 is a resonably powerful FPGA which has had its bitstream fully reversed by [Project Trellis](https://prjtrellis.readthedocs.io/en/latest/index.html). This enables it be to fully supported by [the open source tools](https://github.com/YosysHQ/oss-cad-suite-build), requiring no vendor tools.
+The Lattice ECP5 is a reasonably powerful FPGA which has had its bitstream fully reversed by [Project Trellis](https://prjtrellis.readthedocs.io/en/latest/index.html). This enables it be to fully supported by [the open source tools](https://github.com/YosysHQ/oss-cad-suite-build), requiring no vendor tools.
  - [ECP5 Family Datasheet](https://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/ECP5/FPGA-DS-02012-2-8-ECP5-ECP5G-Family-Data-Sheet.ashx?document_id=50461)
 
 ## About the boards
@@ -29,3 +29,9 @@ The Colorlite i5 is technically part of a commercial [videowall product](https:/
 - VexRiscv - RISC-V CPU: https://github.com/SpinalHDL/VexRiscv
 - NextPNR - Place and route tool : https://github.com/YosysHQ/nextpnr
 - Project Trellis - PNR / Bitstream for ECP5: https://github.com/YosysHQ/prjtrellis
+
+## Terminology
+- FPGA - Field Programmable Gate Array. A programmable device, which consists of arbitrarily configurable logic.
+- JTAG - A serial programming and testing interface used to program our FPGA boards.
+- Python - A general purpose high-level programming lanugage
+- Verilog - A programming language used specifically with FPGAs
