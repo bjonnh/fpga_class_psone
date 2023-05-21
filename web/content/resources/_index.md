@@ -32,6 +32,10 @@ The Colorlite i5 is technically part of a commercial [videowall product](https:/
 
 ## Terminology
 - FPGA - Field Programmable Gate Array. A programmable device, which consists of arbitrarily configurable logic.
+- IP Core - Blocks of logic used to perform specific functions
 - JTAG - A serial programming and testing interface used to program our FPGA boards.
+- LUT - Lookup table: A piece of logic that allows mappings of a series of inputs states to specific output. An FPGA largely consists of a programmable/configurable matrix  of LUTs, and the "size" of an FPGA is often specified in LUTs.
+- OSS - Open Source Software
+- PMOD - A connector laid out using standard 0.1" headers. Usually provides a byte worth of IO and power/ground in a [standard layout](https://digilent.com/blog/how-to-use-the-pmod-ports-on-the-arty/)
 - Python - A general purpose high-level programming lanugage
 - Verilog - A programming language used specifically with FPGAs
