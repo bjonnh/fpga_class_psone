@@ -50,10 +50,6 @@ mkdir -p litex
 cd litex
 curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
 python3 litex_setup.py --init
-cd litex
-# We need to do that as litex is currently broken
-git checkout 53a0bc92e459ad440ae1a9fb9f6f24c600f658d6
-cd ..
 python3 litex_setup.py --install
 
 echo "Everything is installed we can now test"
