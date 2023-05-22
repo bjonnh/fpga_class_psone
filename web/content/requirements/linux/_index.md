@@ -15,16 +15,19 @@ And you need to be able to setup your own networks (so no work locked computers)
 
 Make sure you don't try it for the first time on the day of the class, you will be unhappy and we will be as well.
 
-### Fast installation on Ubuntu
+### Scripted installation on Debian/Ubuntu
 
-If you trust me, you can run everything with:
 ```shell
-curl -sf -L https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh -o- |bash
+wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux_admin.sh
+sudo ./setup_linux_admin.sh
+# You will have to logout and login to get the new group pemissions.
+wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh
+./setup_linux_admin.sh
 ```
 
 ### Linux details (useful only if you have issues)
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
-You need to have **cURL**, **git** and other build tools installed. 
+You need to have **cURL**, **git** and other build tools installed.
 And you need to be a member of the dialout group to be able to access the programmer serial port.
 On ubuntu, those with:
 ```shell
@@ -37,7 +40,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger # force udev to take
 {{% /notice %}}
 
 
-Go to 
+Go to
 https://github.com/YosysHQ/oss-cad-suite-build/releases/tag/2023-05-05
 and get the one for your platform, put it in /tmp
 
