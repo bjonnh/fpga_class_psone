@@ -117,10 +117,14 @@ endmodule
 ```shell
 yosys -p "synth_ecp5 -top top -json follow.json" follow.v
 nextpnr-ecp5 --json follow.json --textcfg follow.config --25k --package CABGA381 --lpf follow.lpf
-ecppack --svf follow.svf follow.config follow.bit
+ecppack --compress --svf follow.svf follow.config follow.bit
 ```
 
 ## Upload
+
+```shell
+ecpdap program follow.bit
+```
 
 ```shell
 sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000000" follow.svf

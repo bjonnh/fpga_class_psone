@@ -183,13 +183,17 @@ yosys -p "synth_ecp5 -top top -json blink.json" blink.v
 # this will generate a placed and routed file blink_out.config
 nextpnr-ecp5 --json blink.json --textcfg blink_out.config --25k --package CABGA381 --lpf blink.lpf
 # this will generate both a SVF file and a bitstream BIT file
-ecppack --svf blink.svf blink_out.config blink.bit
+ecppack --compress --svf blink.svf blink_out.config blink.bit
 ```
 
 A SVF (Serial Vector Format) file is a text file that describe the all the instructions that will be sent on the JTAG interface to program the chip. It is the way to transfer the Bitstream into the chip through its JTAG interface. 
 Currently we are just copying in a volatile way to the chip, cut the power and it is gone. There are ways to change the SVF file so it sends it to the connected FLASH instead (if it has one).
 
 ## Sending to the board
+
+```shell
+ecpdap program blink.bit
+```
 
 Then you upload with
 ```shell
