@@ -52,6 +52,7 @@ class _CRG(Module):
 class ColorLite(SoCMini):
     def __init__(self, sys_clk_freq=int(50e6), with_etherbone=True, ip_address=None, mac_address=None):
         platform = colorlight_i5.Platform(revision="7.0")
+        platform.add_source("./blinker.v")
 
         # CRG --------------------------------------------------------------------------------------
         self.submodules.crg = _CRG(platform, sys_clk_freq)
@@ -74,10 +75,13 @@ class ColorLite(SoCMini):
 
         # artificial signal
         count = Signal(8)
+        blinky = Signal(1)
         #rst_n = platform.request("user_btn_n", 0)
         self.sync += count.eq(count + 1)
+        self.specials += Instance("blinker", i_clk_i=count[0], o_led_o=blinky)
         analyzer_signals = [
             count,
+            blinky,
         #    rst_n
         ]
         self.submodules.analyzer = LiteScopeAnalyzer(analyzer_signals,
