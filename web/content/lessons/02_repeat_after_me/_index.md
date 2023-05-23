@@ -128,4 +128,4 @@ sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000
 
 ## Exercice
 
-- [ ] Make it have a longer memory
+- [ ] Make it have a longer memory, bonus points if it is a parameter to the module
