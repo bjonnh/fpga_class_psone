@@ -198,7 +198,7 @@ litex_server --udp --udp-ip=10.0.0.42
 
 Start an acquisition:
 ```shell
-litescope_cli -r --dump dump.sr
+litescope_cli --dump dump.sr
 ```
 
 Once you press the button on the device, it will trigger the logic analyzer and save a file `dump.sr` with the signals.
