@@ -3,4 +3,7 @@ program.sh
 **/*.svf
 **/*_out.config
 **/*.json
+**/*.config
+**/*.bi
+**/*.bdf
 
