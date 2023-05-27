@@ -1,5 +1,5 @@
 +++
-title = "04 - Blink...again?"
+title = "04 - Blink...again"
 weight = 1
 +++
 
