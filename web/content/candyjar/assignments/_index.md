@@ -21,3 +21,10 @@ This is just a simplified view but this is more or less the order of operations 
 - Update inputs and outputs
 - …
 
+There is an additional mode which is not present on every FPGA but is on the ECP5 that allows you to initialize registers to specific values. Some FPGA don't have that and will either assign at 0, or even have values random.
+
+You have to think that non-blocking statements may take more cycles to happen than you think (because things have to propagate). 
+Whereas blocking ones will happen instantly.
+
+Avoid mixing both if you don't need to (and the result may not be exactly portable from different kinds of FPGA).
+
