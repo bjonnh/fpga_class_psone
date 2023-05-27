@@ -87,7 +87,9 @@ Our state register is the "expression" for the case, and our predefined state na
 So we'll just copy the code for **state_off** into **default**.
 
 The state machine is structured such that the initial state is off, then it proceeds to the dim state, and then the bright state before it loops back to the off state and repeats indefinitely.
-The **enable** register is what we use to put the output into the high-Z state.  When **enable** is high, we don't care what **led** is set to.
+The **enable** register is what we use to put the output into the high-Z state.  When **enable** is high, we don't care what **led** is set to.  The following diagram shows a visual representation of this very basic state machine.
+
+![fsm_diagram.png](fsm_diagram.png)
 
 ## The Code
 At this point, let's just see the code in its entirety:
