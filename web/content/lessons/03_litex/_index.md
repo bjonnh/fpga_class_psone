@@ -175,7 +175,7 @@ python3 main.py --build
 
 We are supposed to be able to do:
 ```shell
-python3 main.py --load
+ecpdap program build/gateware/colorlite.bit
 ```
 
 To load on the board but it doesn't always work.
