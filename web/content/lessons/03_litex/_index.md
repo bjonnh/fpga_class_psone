@@ -201,7 +201,7 @@ Start an acquisition:
 litescope_cli --dump dump.sr
 ```
 
-Once you press the button on the device, it will trigger the logic analyzer and save a file `dump.sr` with the signals.
+It will trigger the logic analyzer and save a file `dump.sr` with the signals. You can also do a .csv by changing dump.sr by dump.csv.
 
 You can view it using tools like sigrok-cli or gtkwave:
 
