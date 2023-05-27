@@ -9,13 +9,13 @@ module top(input wire clk, output wire led_pin);
 	localparam state_brite = 2'b10;
 	reg [1:0] led_state = state_off;
 	
-	// divide input 25MHz clock to a period of roughly 100ms
-	clkdiv #(.DIV(2560000)) slowclk(
+	// divide input 25MHz clock to a period of 100ms
+	clkdiv #(.DIV(2500000)) slowclk(
 			.clk_i(clk), 
 			.clk_o(baseclk));
 	
 	// set up delay counter for the state machine
-	// each clock period is ~100ms so total wait time is ~500ms
+	// each clock period is 100ms so total wait time is 500ms
 	localparam state_time = 5;
 	reg [7:0] counter = state_time;
 	
