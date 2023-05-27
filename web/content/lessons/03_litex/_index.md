@@ -1,9 +1,6 @@
 --- 
 title: "03 - LiteX"
 nav_order: 3
-date: 2023-05-09  
-author: Jonathan Bisson
-id: 20230509212227
 ---
 
 
