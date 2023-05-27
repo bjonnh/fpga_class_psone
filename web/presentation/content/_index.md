@@ -28,7 +28,7 @@ Learning stuff about FPGA
 - Carl Karsten (boards-master/testing/writing)
 - Jonathan Bisson (bottle-washing/conception/testing/writing)
 - Peter Zieba (testing/writing)
-- Stephen Kulov (soldering/testing/writing)
+- Stephan Kulov (soldering/testing/writing)
 
 
 ### Other thanks
