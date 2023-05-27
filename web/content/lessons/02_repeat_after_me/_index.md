@@ -41,7 +41,7 @@ We can set the value of a register at the beginning of the life of the module:
 
 ## Code
 follow.lpf:
-``text
+```text
 LOCATE COMP "clk_i" SITE "P3";
 IOBUF PORT "clk_i" IO_TYPE=LVCMOS33;
 FREQUENCY PORT "clk_i" 25 MHZ;
@@ -52,7 +52,7 @@ IOBUF PORT "led_o" IO_TYPE=LVCMOS25;
 LOCATE COMP "port_i" SITE "E1";
 IOBUF PORT "port_i" PULLMODE=UP IO_TYPE=LVCMOS33;
 
-``
+```
 
 follow.v
 ```verilog
