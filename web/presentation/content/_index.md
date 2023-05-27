@@ -138,6 +138,9 @@ And you can design your own chip now:
 [ZeroToASIC Course](https://www.zerotoasiccourse.com/)
 [Efabless](https://efabless.com/)
 
+Reuse reuse reuse:
+https://opencores.org/
+
 ---
 
 <!-- .wrap -->
