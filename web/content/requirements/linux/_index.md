@@ -22,7 +22,7 @@ wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_li
 sudo ./setup_linux_admin.sh
 # You will have to logout and login to get the new group pemissions.
 wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh
-./setup_linux_admin.sh
+./setup_linux.sh
 ```
 
 (Obviously you need curl installed and your user will need to be able to sudo)
