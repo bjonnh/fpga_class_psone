@@ -109,7 +109,7 @@ cd litex
 git checkout 53a0bc92e459ad440ae1a9fb9f6f24c600f658d6
 cd ..
 tabbypy3 litex_setup.py --install
-tabbypy3 litex_setup.py --gcc=riscv
+sudo python3 litex_setup.py --gcc=riscv
 ```
 #### Testing it
 ```
