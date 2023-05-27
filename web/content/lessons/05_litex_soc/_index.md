@@ -1,5 +1,5 @@
 +++
-title = "04 - LiteX for real"
+title = "05 - LiteX for real"
 +++
 
 LiteX can do a lot more than our previous example. It was created to generate SoC (systems on chips) that can be configured.
