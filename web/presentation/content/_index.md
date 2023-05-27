@@ -9,9 +9,32 @@ title = "PS1's FPGA class"
 Learning stuff about FPGA
 { .text-intro }
 
-[Class web site](https://bjonnh.github.com/fpga_class_psone)
+**[Class web site](https://bjonnh.github.io/fpga_class_psone)**
 
-[Presentation web site](https://bjonnh.github.com/fpga_class_psone/presentation)
+**[https://bjonnh.github.com/fpga_class_psone/presentation](https://bjonnh.github.com/fpga_class_psone/presentation)**
+
+**[bjonnh-fpga@bjonnh.net](mailto:bjonnh-fpga@bjonnh.net)**
+
+---
+
+<!--: .wrap -->
+
+## **Who's behind it**
+
+**(alphabetical order no jealous)**
+
+### The main team
+
+- Carl Karsten (boards-master/testing/writing)
+- Jonathan Bisson (bottle-washing/conception/testing/writing)
+- Peter Zieba (testing/writing)
+- Stephen Kulov (soldering/testing/writing)
+
+
+### Other thanks
+
+- The people behind [OSS-CAD](https://github.com/YosysHQ/oss-cad-suite-build), [LiteX](https://github.com/enjoy-digital/litex) and the hundreds of other tools we don't see
+- Bonnie King (testing on Mac)
 
 ---
 
@@ -66,4 +89,47 @@ We already mounted the 45 degree pins on the left and right of your board and we
 {{< gallery title="Ethernet board" href="https://github.com/kazkojima/colorlight-i5-tips#ethernet" src="https://tomverbeure.github.io/assets/colorlight_i5/ethernet_expansion_board.jpg">}}Kazumoto Kojima's ethernet board{{< /gallery >}}
 
 The pulse transformers and RJ45 board.
+
+---
+
+<!--: .wrap -->
+
+## **Setup**
+
+Who had issues setting up?
+
+---
+
+<!--: .wrap -->
+
+## **Lesson 1**
+
+Blinky
+
+---
+
+<!--: .wrap -->
+
+## **Lesson 2**
+
+Blinky but with purpose
+
+---
+
+<!--: .wrap -->
+
+## **Lesson 3**
+
+SoC with LiteX
+
+
+---
+
+<!--: .wrap -->
+
+## **Lesson 4 (only for Linux and Mac users sorry)**
+
+SoC with a RiscV cpu
+
+
 
