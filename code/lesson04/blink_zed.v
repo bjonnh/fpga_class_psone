@@ -9,7 +9,7 @@ module top(input wire clk, output wire led_pin);
 	localparam state_brite = 2'b10;
 	reg [1:0] led_state = state_off;
 	
-	// divide input 25MHz clock to a period of 100ms
+	// divide input 25MHz clock to get a period of 100ms (10Hz)
 	clkdiv #(.DIV(2500000)) slowclk(
 			.clk_i(clk), 
 			.clk_o(baseclk));
