@@ -43,7 +43,7 @@ This wasn't covered previously, but when instantiating a module (any module) you
 
 Building a state machine is a fundamental exercise in FPGA design.  All CPUs use some kind of state machine as the basis of how they operate and execute instructions.
 The clock signal moves the machine forward through its states 
-We first need to define our states and describe how we want to allow them to move between each other.  We'll make a project where we hook up a single GPIO pin as such:
+We first need to define our states and describe how we want to allow them to move between each other.  We'll make a project where we hook up a single GPIO pin (FPGA-pad K5 as coded in the example) as such:
 
 
 and we'll make that pin a tri-state output and define all three states.  When the pin is a one (3.3V), the LED should turn off completely because all the current is flowing between the pin and ground, i.e. we're shorting across the LED.
