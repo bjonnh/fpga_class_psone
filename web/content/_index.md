@@ -15,4 +15,5 @@ There are checkmarks next to the pages you visited. You can clear them on the bo
 
 You can change the theme of the website on the bottom left next to the brush. It is not guaranteed to look right if you use a light theme.
 
+The presentation is [HERE](./presentation).
 
