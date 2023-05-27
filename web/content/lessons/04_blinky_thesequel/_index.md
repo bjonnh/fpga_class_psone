@@ -1,8 +1,8 @@
 ---
 title: "04 - Blink...again?"
+nav_order: 4
 date: 2023-05-26
 author: Stephan Kulov
-nav_order: 4
 ---
 
 ## Tri-state buffers
