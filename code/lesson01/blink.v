@@ -5,7 +5,7 @@ module top(input clk_i, output led_o);
    clkdiv #(.DIV(1000000)) slowclk (clk_i, baseclk);
 
    always @(posedge baseclk) begin;
-      led_reg <= !led_reg;
+      led_reg <= ~led_reg;
    end
 
    assign led_o = led_reg;
