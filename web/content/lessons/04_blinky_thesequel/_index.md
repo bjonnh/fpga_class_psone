@@ -12,13 +12,14 @@ Logic states in verilog can not only take on the binary values of one and zero, 
 To highlight this, let's take a 1-bit wire that is presumably connected to an output pin with nothing else connected to it.  We can set it to any of these 1-bit constants.
 
 ```verilog
-wire tri_test = 1'b0;	// the voltage at this pin would be 0 volts through a very low resistance
-wire tri_test = 1'b1;	// the voltage here would be 3.3 volts (or whatever VCCIO is set to on that specific I/O bank)
-wire tri_test = 1'bz;	// voltage here......is undefined
+wire tri_test = 1'b0;	// the voltage at this pin would be 0 volts
+wire tri_test = 1'b1;	// the voltage here would be 3.3 volts
+wire tri_test = 1'bz;	// voltage here...is not well defined; the pin is "floating"
 ```
 
 This is called a tri-state buffer.  These are typically used on bidirectional data buses with one or more devices attached.  When a single device on the bus wants to put data out onto the bus, all the other connected devices must put their data lines into "high-Z", or put another way, "tri-state" their outputs.
-If they don't do this properly, then the bus is in "contention" and can result in funky operation and/or damage.
+If they don't do this properly, then the bus is in "contention" and can result in funky operation and/or damage.  The opposite can also happen where the bus is completely floating and can give erronous
+values unless something "pulls" it up/down to a high/low state.
 
 Although using `z` in verilog is perfectly valid, the Yosys open-source synthesis tools currently don't support translating something like `1'bz` onto a GPIO pin.  You'll get a warning that looks like this:
 `Warning: Yosys has only limited support for tri-state logic at the moment.`
@@ -27,7 +28,7 @@ However, since verilog is only our higher level "C code" for describing FPGA beh
 The language FPGAs use for low-level functionality are called the "device primitives".  Lattice has a document describing the primitives for many of its FPGA devices and [it can be found here.](https://www.latticesemi.com/-/media/LatticeSemi/Documents/UserManuals/EI2/fpga_library_D311SP3.ashx?document_id=52656)
 
 
-We're interested in the `BB` primitive which they call **CMOS Input 6mA Sink 3mA Source Sinklim Output Buffer with Tristate – BiDirectional**.  They give the following schematic representation and truth table:
+We're interested in the `BB` primitive which they call "**CMOS Input 6mA Sink 3mA Source Sinklim Output Buffer with Tristate – BiDirectional**".  They give the following schematic representation and truth table:
 
 
 If we want to instantiate this primitve in our code, [the sysIO document](https://www.latticesemi.com/view_document?document_id=50464) gives a verilog example as such:
@@ -35,9 +36,7 @@ If we want to instantiate this primitve in our code, [the sysIO document](https:
 BB buf7 (.I(Q_out7), .T(Q_tri7), .O(buf_Data7), .B(Data[7]));
 ```
 
-This wasn't covered previously, but when instantiating a module (any module) you can list the instance ports in the same order as the module definition.  
-Or you can do what they did here where the port name within the module is called out with a dot in front of it and the instance port is in parentheses next to it.  
-This creates a mapping where things can be out of order, or you can leave unused ports out if you don't need them.  It also reduces the chance of making a mistake in the ordering.
+This wasn't covered previously, but when instantiating a module (any module) you can list the instance ports in the same order as the module definition. Or you can do what they did here where the port name within the module is called out with a dot in front of it and the instance port is in parentheses next to it. This creates a mapping where things can be out of order, or you can leave unused ports out if you don't need them.  It also reduces the chance of making a mistake in the ordering.
 
 
 ## Finite state machines
@@ -82,6 +81,7 @@ The **enable** register is what we use to put the output into the high-Z state. 
 
 ## The Code
 At this point, let's just see the code in its entirety.
+
 **blink_zed.v**:
 ```verilog
 module top(input wire clk, output wire led_pin);
@@ -203,7 +203,7 @@ sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000
 
 ## Exercice
 - [ ] Make the led change state faster
-- [ ] Make the led change state slowweerrr
+- [ ] Make the led change state slowweeerrrr
 - [ ] Make the led stay on longer when bright and shorter when dim
 - [ ] Change the order of the states such that it's dim->off->bright
 - [ ] Change the state based on a push-button input instead of clock time
