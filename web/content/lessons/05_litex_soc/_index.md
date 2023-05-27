@@ -1,8 +1,8 @@
 ---
 title: "05 - LiteX for real"
+nav_order: 5
 date: 2023-05-09
 author: Jonathan Bisson
-nav_order: 5
 ---
 
 LiteX can do a lot more than our previous example. It was created to generate SoC (systems on chips) that can be configured.
