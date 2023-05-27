@@ -1,7 +1,8 @@
-+++
-title = "01 - Blink"
-weight = 1
-+++
+---
+title: "01 - Blink"
+date: 2023-05-09
+author: Jonathan Bisson
+---
 
 Blinky is the "Hello world" of FPGAs
 
