@@ -1,8 +1,8 @@
 ---
 title: "02 - Repeat after me"
+nav_order: 2
 date: 2023-05-09
 author: Jonathan Bisson
-nav_order: 2
 id: 20230509203129
 ---
 
