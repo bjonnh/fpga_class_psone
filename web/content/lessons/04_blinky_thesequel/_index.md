@@ -25,13 +25,22 @@ Although using `z` in verilog is perfectly valid, the Yosys open-source synthesi
 `Warning: Yosys has only limited support for tri-state logic at the moment.`
 
 However, since verilog is only our higher level "C code" for describing FPGA behavior, we can drop down to use the "inline assembly" of describing this same behavior.
-The language FPGAs use for low-level functionality are called the "device primitives".  Lattice has a document describing the primitives for many of its FPGA devices and [it can be found here.](https://www.latticesemi.com/-/media/LatticeSemi/Documents/UserManuals/EI2/fpga_library_D311SP3.ashx?document_id=52656)
+The language FPGAs use for its low-level building blocks are called the "device primitives".  Lattice has a document describing the primitives for many of its FPGA devices and [it can be found here.](https://www.latticesemi.com/-/media/LatticeSemi/Documents/UserManuals/EI2/fpga_library_D311SP3.ashx?document_id=52656)
 
 
 We're interested in the `BB` primitive which they call "**CMOS Input 6mA Sink 3mA Source Sinklim Output Buffer with Tristate – BiDirectional**".  They give the following schematic representation and truth table:
 
+---
 
-If we want to instantiate this primitve in our code, [the sysIO document](https://www.latticesemi.com/view_document?document_id=50464) gives a verilog example as such:
+![BB_schematic.png](BB_schematic.png)
+
+---
+
+![BB_table.png](BB_table.png)
+
+---
+
+If we want to instantiate this primitve in our code, [the sysI/O usage guide](https://www.latticesemi.com/view_document?document_id=50464) gives a verilog example as such:
 ```
 BB buf7 (.I(Q_out7), .T(Q_tri7), .O(buf_Data7), .B(Data[7]));
 ```
@@ -43,11 +52,12 @@ This wasn't covered previously, but when instantiating a module (any module) you
 
 Building a state machine is a fundamental exercise in FPGA design.  All CPUs use some kind of state machine as the basis of how they operate and execute instructions.
 The clock signal moves the machine forward through its states 
-We first need to define our states and describe how we want to allow them to move between each other.  We'll make a project where we hook up a single GPIO pin (FPGA-pad K5 as coded in the example) as such:
+We first need to define our states and describe how we want to allow them to move between each other.  We'll make a project where we hook up a single GPIO pin (FPGA-pad K5 as coded in this example) as such:
 
+![LED_schematic.png](LED_schematic.png)
 
 and we'll make that pin a tri-state output and define all three states.  When the pin is a one (3.3V), the LED should turn off completely because all the current is flowing between the pin and ground, i.e. we're shorting across the LED.
-When the pin is a zero (0V), the LED is on and quite bright because current flows through the parallel combination of both resistors (~180ohm) since they're both connected to ground.
+When the pin is a zero (0V), the LED is on and quite bright because current flows through the parallel combination of both resistors (~180ohm) since they're both connected to 0V (ground).
 And finally, when the pin is high-Z it is disconnected so the LED is still on but current is only flowing through the 1k resistor and will therefore be much dimmer.  So we have three states we can move between.
 ```verilog
 localparam state_off = 2'b00;
@@ -62,8 +72,8 @@ Since there are 3 valid states, we need at least two bits to cover that many sta
 We'll use a clock for this state machine which yields us a 100ms period, so we divide the 25MHz by 2500000:
 ```verilog
 clkdiv #(.DIV(2500000)) slowclk(
-			.clk_i(clk), 
-			.clk_o(baseclk));
+	.clk_i(clk), 
+	.clk_o(baseclk));
 ```
 
 Lastly, we want to be able to control how long we're in each state.  To keep it simple, we'll use the same time between each state.
@@ -80,9 +90,9 @@ The state machine is structured such that the initial state is off, then it proc
 The **enable** register is what we use to put the output into the high-Z state.  When **enable** is high, we don't care what **led** is set to.
 
 ## The Code
-At this point, let's just see the code in its entirety.
+At this point, let's just see the code in its entirety:
 
-**blink_zed.v**:
+**blink_zed.v**
 ```verilog
 module top(input wire clk, output wire led_pin);
 	wire baseclk;
@@ -171,13 +181,25 @@ module clkdiv #(parameter DIV = 24'd5000)(
     end
     assign clk_o = clk_o_internal;
 endmodule
-
 ```
 
-The only portion of the code not fully discussed yet is the `BB tristate_out` instance.  A couple things to note.
+The only portion of the above code not fully discussed yet is the `BB tristate_out` instance.  A couple things to note.
 First, the **T** port is like an active-low enable input, so our enable signal is being inverted with the leading tilde (~) character.
 Also worth mentioning is that the **O** port is not used here so we don't have to connect anything to it.
 
+<br>
+
+**blink_zed.lpf**
+```verilog
+LOCATE COMP "clk" SITE "P3";
+IOBUF PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHZ;
+
+LOCATE COMP "led_pin" SITE "K5";
+IOBUF PORT "led_pin" IO_TYPE=LVCMOS33 DRIVE=12;
+```
+
+A bonus tidbit here is the **DRIVE** attribute which sets the drive strength of an output pin.  There is much more info in the [the sysI/O usage guide](https://www.latticesemi.com/view_document?document_id=50464), but the general jist of it is that you can set it between 4, 8, 12, and 16.  What this does in practice is change the ON resistance of the transistors driving the output.  A higher value of drive strength results in lower ON resistance, which means the effective series resistance of your output is lower and therefore you can push/pull more current out/in of the pin while maintaining valid logic levels at the receiving device(s).
 
 ## Build
 
