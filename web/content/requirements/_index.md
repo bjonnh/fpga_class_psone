@@ -22,7 +22,7 @@ Make sure you don't try it for the first time on the day of the class, you will 
 
 ## Boards
 
-You will receive two boards:
+You will receive three boards (the first two are stacked together):
 - A colorlight i5, the FPGA board itself on a SODIMM support
 - A breakout/carrier board which holds the SODIMM and in turn provides HDMI, a USB programmer and tons of IOs on PMOD-like connectors
 - A double ethernet PMOD that will provide connectivity (we will connect that to PS1's network) 
