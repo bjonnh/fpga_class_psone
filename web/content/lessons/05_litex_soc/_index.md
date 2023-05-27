@@ -256,10 +256,11 @@ python3 colorlight_i5.py --ecppack-compress --build
 
 ## Upload
 
-Either
 ```shell
-python3 colorlight_i5.py --load
+ecpdap program build/gateware/colorlite.bit
 ```
+
+(We could have used --load but there is a bug in Litex)
 
 If your ecpdap works
 
