@@ -11,7 +11,7 @@ This is probably the simplest code you can use on an FPGA that will generate som
 
 ## How code is organized
 ### Verilog
-We have a verilog file. Verilog is a High-level description language that allows us to describe how we want the FPGA to react to specific logic signals.
+We have a verilog file. Verilog is a hardware description language that allows us to describe how we want the FPGA to react to specific logic signals.
 ```verilog
 module top(input clk_i, output led_o);
    reg  led_reg;
@@ -20,7 +20,7 @@ module top(input clk_i, output led_o);
    clkdiv #(.DIV(200000)) slowclk (clk_i, baseclk);
 
    always @(posedge baseclk) begin;
-      led_reg <= !led_reg;
+      led_reg <= ~led_reg;
    end
 
    assign led_o = led_reg;
@@ -77,12 +77,10 @@ IOBUF PORT "led_o" IO_TYPE=LVCMOS25;
 
 We are taking the pad P3 of the FPGA (site definition), saying it has a 3V3 CMOS level (LVCMOS33) and that it is a frequency type port that's receiving a 25MHz clock.
 
-All the ports are supposedly connected to a 3.3V rail so should be LVCMOS33. 
-
-And we are saying the U16 is a 2.5V CMOS level GPIO. Here we copied from other files but there are little reasons why this one was set to that.
+And we are saying the U16 is a 2.5V CMOS level (LVCMOS25) GPIO. This shouldn't make sense since all the FPGA I/O banks (VCCIO pins) are supposedly connected to a 3.3V rail and therefore should be LVCMOS33 too. However, here we copied from other files but there are little reasons why this one was set to that.
 
 ## Digging into "SOMETHING"
-We will ignore the details of clkdiv for that lesson and do something people programming FPGA love: making abstractions and ignoring the implementation details. In practice unfortunately you often have to go dig in implementations for performance, size of power consumption reasons.
+We will ignore the details of clkdiv for that lesson and do something people programming FPGA love: making abstractions and ignoring the implementation details! In practice unfortunately you often have to go dig in implementations for performance, size of power consumption reasons.
 
 ```verilog
 module top(input clk_i, output led_o);
@@ -92,7 +90,7 @@ module top(input clk_i, output led_o);
    clkdiv #(.DIV(200000)) slowclk (clk_i, baseclk);
 
    always @(posedge baseclk) begin;
-      led_reg <= !led_reg;
+      led_reg <= ~led_reg;
    end
 
    assign led_o = led_reg;
@@ -108,22 +106,23 @@ endmodule
 This is declaring a module named top (mandatory in Yosys, that's the start of everything) that has one input clk_i and one output led_o. All things in Verilog are divided like that so blocks can be reused and reimplemented easily. You could think of them as "functions" for now (even if the reality is slightly more complex).
 
 ```verilog
-	reg led_reg;
+    reg led_reg;
     wire baseclk;
 ```
 
 Here we are talking about two essential entities of Verilog, **reg** or registers which are ways to store information.
-And **wires** which are how blocks are connected to each other. 
+And **wires** which are how blocks are connected to each other.
+The "input" and "output" above can also be specified as **reg** or **wire** but if not explicitly defined they are **wire** by default.  i.e. **input clk_i** => **input wire clk_i**
 
 ```verilog
-	clkdiv #(.DIV(200000)) slowclk (clk_i, baseclk);
+    clkdiv #(.DIV(200000)) slowclk (clk_i, baseclk);
 ```
 
-Here we are instanciating a clkdiv block called slowclk. It takes clk_i and baseclk are what we call "nets" they are the connections to and from the module. And we set the parameter DIV to the value 200000. What this module does is dividing the input clock on clk_i by the DIV value and outputing that to baseclk. In our case clk_i is 25MHz, we divide by 200000 so we get a 125Hz output clock.
+Here we are instantiating a clkdiv block called slowclk. It takes clk_i and baseclk are what we call "nets" they are the connections to and from the module. And we set the parameter DIV to the value 200000. What this module does is dividing the input clock on clk_i by the DIV value and outputing that to baseclk. In our case clk_i is 25MHz, we divide by 200000 so we get a 125Hz output clock.
 
 ```verilog
    always @(posedge baseclk) begin;
-      led_reg <= !led_reg;
+      led_reg <= ~led_reg;
    end
 ```
 
@@ -133,7 +132,7 @@ Here we say, on the positive edge of baseclk, we want to assign to **led_reg** t
 We have various kinds of assignment in Verilog and we have more details in the [Candy jar - Assignments](../../candyjar/assignments).
 
 
-We will not get into the details here, just try to use non-blocking assignments when you start inside your blocks to avoid race-conditions. 
+We will not get into the details here, just try to use non-blocking assignments inside your sequential (has either **posedge** or **negedge**) @always blocks to avoid race-conditions. 
 
 ```verilog
 assign led_o = led_reg;
@@ -191,15 +190,17 @@ Currently we are just copying in a volatile way to the chip, cut the power and i
 
 ## Sending to the board
 
+If **ecpdap** is installed and working on your machine, you can use this to program the board:
 ```shell
 ecpdap program blink.bit
 ```
 
-Then you upload with
+Otherwise, **openFPGALoader** should do the trick:
 ```shell
 sudo $HOME/oss-cad-suite/libexec/openFPGALoader -b "colorlight-i5" --freq "16000000" blink.svf
 ```
 
 
 ## Exercice
-- [ ] Make the led blink at 1Hz.
+- [ ] Make the led blink at 1Hz instead of 125Hz.
+- [ ] Remove `led_reg` and the `assign` statement altogether by using `output reg led_o` and using `led_o` directly in the `@always` block.
