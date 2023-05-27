@@ -22,7 +22,16 @@ If you trust me, you can run everything with:
 curl -sf -L https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh -o- |bash
 ```
 
-### Linux details (useful only if you have issues)
+(Obviously you need curl installed and your user will need to be able to sudo)
+
+### Fast installation on other distros
+
+You can follow most of the commands from:
+https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh
+
+Just replace apt/apt-get by what you use.
+
+### Linux details (useful only if you have issues or another distro)
 {{% notice style="primary" title="Attention" icon="skull-crossbones" %}}
 You need to have **cURL**, **git** and other build tools installed. 
 And you need to be a member of the dialout group to be able to access the programmer serial port.

@@ -1,0 +1,36 @@
+theme           = "hugo-webslides"
+baseURL = 'https://bjonnh.github.io/fpga_class_psone/presentation'
+canonifyURLs = true
+relativeURLs = true
+
+languageCode = 'en-us'
+title = 'PS1 FPGA Class'
+
+
+[params]
+  author = "bjonnh"
+  homepage = "www.bjonnh.net"
+
+[params.webslides]
+  banner = false
+  slideshow = true
+  vertical = false
+  autoslide = false
+  changeOnClick = false
+  disableLoop = false
+  minWheelDelta = 40
+  disableNavigateOnScroll = false
+  scrollWait = 450
+  slideOffset = 50
+  hideIndex = false
+
+[blackfriday]
+extensionsmask = ["autoHeaderIds"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+    [markup.goldmark.renderer]
+      unsafe = true

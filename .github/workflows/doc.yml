@@ -38,6 +38,11 @@ jobs:
           cd web
           hugo mod get -u
           hugo --minify
+      - name: Build presentation
+        run: |
+          cd web/presentation
+          hugo --minify
+          cp -rf public ../public/presentation
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

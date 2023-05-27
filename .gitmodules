@@ -1,0 +1,3 @@
+[submodule "web/presentation/themes/hugo-webslides"]
+	path = web/presentation/themes/hugo-webslides
+	url = https://github.com/rcjach/hugo-webslides.git
