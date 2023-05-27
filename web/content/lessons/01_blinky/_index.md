@@ -2,6 +2,7 @@
 title: "01 - Blink"
 date: 2023-05-09
 author: Jonathan Bisson
+nav_order: 1
 ---
 
 Blinky is the "Hello world" of FPGAs
