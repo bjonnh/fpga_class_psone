@@ -1,7 +1,8 @@
-+++
-title = "04 - Zed"
-weight = 1
-+++
+---
+title: "04 - Blink...again?"
+date: 2023-05-26
+author: Stephan Kulov
+---
 
 ## Tri-state buffers
 Logic states in verilog can not only take on the binary values of one and zero, but there is a valid "third" state called high-Z (or high impedance).  This is a fancy way of saying disconnect something completely, i.e. an open circuit.
