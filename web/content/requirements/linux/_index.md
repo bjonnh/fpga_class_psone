@@ -19,9 +19,11 @@ Make sure you don't try it for the first time on the day of the class, you will 
 
 ```shell
 wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux_admin.sh
+chmod +x ./setup_linux_admin.sh
 sudo ./setup_linux_admin.sh
 # You will have to logout and login to get the new group pemissions.
 wget -N  https://raw.githubusercontent.com/bjonnh/fpga_class_psone/main/setup_linux.sh
+chmod +x ./setup_linux.sh
 ./setup_linux.sh
 ```
 
