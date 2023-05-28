@@ -24,6 +24,7 @@ The Colorlite i5 is technically part of a commercial [videowall product](https:/
 - Schematic for the i5 Ext board: https://github.com/wuxx/Colorlight-FPGA-Projects/blob/master/schematic/i5_v6.0-extboard.pdf?raw=true
 - Pin mapping of the extension board: https://tomverbeure.github.io/2021/01/30/Colorlight-i5-Extension-Board-Pin-Mapping.html
 - Finaly, another add-on to the extension board provides ethernet: https://github.com/kazkojima/colorlight-i5-tips
+- The SO-DIMM socket https://www.newark.com/amp-te-connectivity/1473149-4/connector-sodimm-socket-200pos/dp/21K5412
 
 ## About the OSS FPGA eco-system
 The tools for working with FPGAs in an open-source stack started around 2015. Project icestorm enabled the use of the Lattice Icestick (a popular ~$20 pre-pandemic development board for the ICE40 FPGA). More recently this board has become hard to come by, however, the toolchain has been greatly developed and supports quite a number of other FPGAs as well.
