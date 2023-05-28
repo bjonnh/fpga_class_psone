@@ -69,7 +69,7 @@ Then in your powershell
 set PATH=%PATH%;C:\msys64\mingw64\bin;C:\msys64\usr\bin
 ```
 
-But then I couldn't get it to compile the board properly. So really you shouldn't be using Windows... But we can still give you the files.
+But then I couldn't get it to compile the board properly. So really you shouldn't be using Windows... But we can still give you the files. Or you can help us fix that.
 
 ### VM using VirtualBox
 What we highly recommend for Windows and Mac users is to install a Ubuntu virtual machine, follow the Linux instructions and share the USB device with the VM.
