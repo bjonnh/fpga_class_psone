@@ -69,6 +69,9 @@ curl -olitex_setup.py https://raw.githubusercontent.com/enjoy-digital/litex/mast
 python3 litex_setup.py --init --install
 cd ..
 ```
+
+Unfortunately we don't have instructions yet on how to setup the Risc V toolchain.
+
 #### Testing it
 ```
 cd "$INSTALL_PATH"/oss-cad-suite
